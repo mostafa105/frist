@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js lap</title>
+    <script>
+        console.log(5**2)
+        let temp = parseInt(prompt("inter the today's temperature")) 
+        function gettemp(){
+            if( isNaN(temp)==false){
+                if(temp>=30){
+                    console.log("HOT")
+                }else{
+                    console.log("COLD")
+                }
+            }else{
+                console.log("please inter integer number")
+            }
+        }
+        gettemp()
+        let name = prompt("inter you name")
+        function getname(){
+            if(isNaN(parseInt(name))==false || name==""){
+                console.log("this name is incorrect")
+            }else{
+              console.log("Name: "+ name)
+            }
+        }
+        getname()
+
+    let birthyear = prompt("inter your birh year")
+    function getbirthyear(){
+        for(i=0;i<4;i++){
+            if(birthyear<2010 ){
+              console.log("birth year: " + birthyear)
+              console.log(2022 - parseInt(birthyear)) 
+               i = 10
+            }
+            else if (birthyear>=2010 ){
+                birthyear = prompt(" please inter your birh year be less 2010 " + (i +1))
+            }
+            else {
+                console.log("Stop")
+            }
+        }
+    }
+    getbirthyear()
+     let a = prompt(parseInt("inter a")) 
+     let b =  prompt(parseInt("inter b ")) 
+     let c = prompt(parseInt("inter c ")) 
+     console.log(" x1 = " + (-b + Math.sqrt(b**2 - 4*a*c ) /2 * a ))
+     console.log(" x2 = " + (-b - Math.sqrt(b**2 - 4*a*c ) /2 * a ))
+     let n = prompt("inter your num1")
+     let m = prompt("inter your num2")
+     console.log((n % 10 )+ (m % 10))
+     let distance_x_y= prompt("inter the distance")
+     console.log(" car x takes: " + ( 1 * distance_x_y) +" m \n car y takes: " + (0.66666666666667 * distance_x_y)+" m")
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

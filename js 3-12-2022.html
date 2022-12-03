@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script> 
+
+
+////// to sumation conut number
+     let   getnum = prompt("inter count number");
+     let sum = 0
+      for(i= 0 ; i<getnum.length;i++){
+        let num = parseInt(getnum.charAt(i)) 
+        sum += num
+      }
+        console.log( "input: "+getnum)
+        console.log("output: "+sum)
+
+
+        //// to reverse
+        let   getnum2 = prompt("inter rev number");
+        let  rev = String(Array.from(getnum2).reverse().toString().replaceAll("," , ""))
+        console.log(rev)
+
+
+
+ 
+
+
+
+        /// to check count number is one number
+        let getnum3 =  prompt("inter number");
+         let  checknum = true ;
+
+        for(i=0 ;i<getnum3.length ;i++){
+          if(getnum3.charAt(i)!=getnum3.charAt(getnum3.length-1)){
+             checknum = false ;
+             i = getnum3.length;
+          }
+        }
+        console.log(checknum)
+
+         
+
+
+
+        ///  to get index number
+
+        let getnum4n  =   prompt("inter n number");
+        let getnum4a  =   prompt("inter a number");
+        let getnum4x  =   prompt("inter x number");
+        if(getnum4n!=getnum4a.length){
+          console.log("please inter " + getnum4n + " number")
+        }else{
+           let indexnu = -1 ;
+          for(i=0 ; i<getnum4a.length;i++){
+             if(getnum4a.charAt(i)==getnum4x){
+             indexnu = i ;
+              i = getnum4a.length
+             }
+        }
+        console.log(indexnu)
+        }
+
+
+
+
+
+/////////////// this for remove number
+        let getnum5nr  =   prompt("inter nr number");
+        let getnum5ar  =   prompt("inter ar number");
+        let getnum5xr  =   prompt("inter xr number");
+        if(getnum5nr!=getnum5ar.length){
+          console.log("please inter " + getnum5nr + " number")
+        }else{
+           let removenum = -1 ;
+          for(i=0 ; i<getnum5ar.length;i++){
+             if(getnum5ar.charAt(i)==getnum5xr){
+              removenum = getnum5ar.replace(getnum5ar.charAt(i),"") ;
+              i = getnum5ar.length
+             }
+        }
+        console.log(removenum)
+        }
+
+
+
+
+
+
+        ///////// this for get two first index and get two last index  and merge
+        let gettext  =   prompt("inter your text for remove");
+        console.log(gettext.substring(0,2) +gettext.substring(gettext.length- 2 ,gettext.length ));
+       
+
+
+
+
+
+
+        ///// this for check z count equle halfe o count but that is a long code so i will axplain it step by step
+         let z = null ; // this to save z 
+         let o = null ; // this to vae o
+        let gettext2 =   prompt("inter your text2 for check"); // for get input 
+        for(i=0;i<gettext2.length;i++){ // loop  for check text ( is not digit , contant just z & o , respectively and z befor o )
+            if(isNaN(gettext2.charAt(i))==false){
+              /// if  is has have  number return massege and prompt for insert corrcte text 
+              gettext2 =  prompt("that have number pleas inter just text for check")
+              i=-1 /// to replay loop
+              z=null; // to set null if is teked value
+              o=null; /////
+            }else{
+              /// here the text is not have digit b
+              if(gettext2.charAt(i)== "z" || gettext2.charAt(i)=="o"){
+                // to check character z or o 
+                if(gettext2.charAt(i)=="z" && o == null){
+                  // if the char equle z and o equle null it's can get here
+                   if(z==null){
+                    // to set frist char
+                    z= gettext2.charAt(i)
+                   }else{
+                    // is not frist char 
+                    z+=gettext2.charAt(i)
+                   }
+                }else if (gettext2.charAt(i)=="o" && z != null){
+                  // to check char equle o and z is full 
+                  if(o==null){
+                    // you know that
+                    o= gettext2.charAt(i)
+                   }else{
+                    ////
+                    o+=gettext2.charAt(i)
+                   }
+                }else {
+                  /// it is can get here if char equle z and o to get value or char equle o and z is not full  
+                  /// mmmmmmmmmm  we neede to be respectively for that i mede the prompt
+                  gettext2 =  prompt(" pleas insert  it respioctively for check")
+                  i= -1 ; //// 
+                  z=null; ////
+                  o=null; ////
+                }
+              }else {
+                // here char is not z or o ///
+                      
+                gettext2 =  prompt(" pleas insert just z & o for check")
+                i= -1;
+                z=null;
+                o=null;
+                }
+            }
+        } 
+        /// to get result 
+        if(o.length==z.length * 2){
+          console.log("yes")
+        }else {
+          console.log("no")
+        }
+
+   
+
+
+
+
+         /// bouns
+        let getnumber_a = parseInt(prompt(" please insert number a"))
+        let getnumber_b = parseInt(prompt(" please insert number b"))
+        let getnumber_c = parseInt(prompt(" please insert number c"))
+        let getnumber_d = parseInt(prompt(" please insert number d"))
+       if((getnumber_b *  getnumber_c )+ getnumber_a ==getnumber_d){
+        console.log(" yes alibaba")
+       }else{
+        console.log(" no alibaba")
+       }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
