@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    class person {
+        constructor (name ,age ,id)
+           {if(constructor == person){
+                throw 'this is absract class'
+           }else{
+                this.name =name;
+                this.age =age ;
+                this.id =id ;
+            }
+            
+        }
+        displayHRRUles(){
+            console.log("weekend the one day in week")
+        }
+    }
+    ///////////////////////////////////////////////////////////////////////////////////
+    class student extends person{
+        constructor(name ,age ,id,track){
+            super(this.name,this.age,this.id) ;
+            this.track =track ;
+        }
+    }
+    ////////////////////////////////////////////////////////////////////////////////////////
+    class emp extends person {
+         static #count = 0 ;
+        constructor (name ,age ,id,salary){
+            emp.#count++ ;
+            super(name ,age ,id)
+            this.salary=salary ;
+        }
+        displaycount(){
+            console.log(emp.#count)
+        }
+        showsalary(){
+            console.log(this.salary)
+        }
+        increasesalary(increase){
+            this.salary+= (this.salary *parseFloat(increase))/100;
+        }
+       
+    }
+
+    let p = new emp("mo",30,111,10);
+    p.increasesalary(10)
+    p.showsalary();
+    let obj = {"location":"egypt" , "address": {"city":"aswan","street":"elsel","zipcod":123}}
+     function objectliteral(){
+       let contantv = obj.location +" " +obj.address.city + " " + obj.address.street +" " +obj.address.zipcod.toString() ;
+           console.log(contantv)
+    }
+    objectliteral()
+     function minandmax(num){
+        let min = Math.min(...num)
+        let max = Math.max(...num)
+        console.log("min = " +min+"   max = " + max)
+       
+     }
+     let number =[1,2,3,9,8,7,6,5,4]
+     minandmax(number)
+    let fruits =["apple", "strawberry", "banana", "orange", 123] 
+    function check(arr){
+    
+       for (i=0 ;i<arr.length;i++  ){
+            let c =String( fruits[i]);
+            if(c===arr[i]){
+                console.log(true);
+
+            }else{ console.log(false)};
+       }
+    }
+    check(fruits);
+   let  checkstart = fruits.forEach(function(item){
+    if(item[0]=="a"){console.log(true)}else{console.log(false)}
+   })
+
+   let  fillterstart = fruits.filter(function(item){
+    // 
+    if(item[0]=="b"|| item[0]=="s"){console.log(item)}
+   }) 
+   let copy =[];
+   fruits.forEach(function (item){
+  
+    return copy+= item ;
+   } )
+   console.log(copy)
+   let cuntries =["egypt", "eraq", "yaman", "soudan", "egypt"]
+    
+   
+
+    
+
+</script>
+</html>

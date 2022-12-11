@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="fontawsson/css/all.min.css">
+  <title>Document</title>
+  <style>
+    .c{
+      width: 95%;
+    }
+    hr{
+      border:1px solid rgb(231, 230, 230) ;
+      
+    }
+  </style>
+</head>
+<body style="display: flex; justify-content: center;">
+  <div style="width:50%; margin: 50px;">
+  <div id="d" style=" border: 3px solid lightgrey; text-align: left ; padding: 20px;">
+    <h1>registration form</h1>
+    <input type="text" class="c" id="fullName" placeholder="Inter Full Name" >
+    <p id="error" style="color:red ; font-size:small ; opacity: 0;">inviled name</p>
+    <hr>
+    <input type="email" class="c" aria-placeholder="Inter email" id="email">
+    <hr>
+    <select name="cites" class="c" id="cites">
+     
+      <option value="aswan">aswan</option>
+     
+      <option value="cairo">cairo</option>
+      
+      <option value="alx">alx</option>
+      
+    </select>
+    <hr>
+    <input type="password" class="c" id="pass" placeholder="Enter password">
+    <br>
+    <br>
+    <input type="password" class="c" id="passr" placeholder="Enter password">
+    <p id="error2" style="color:red ; font-size:small ; opacity: 0;">password and repeat password should be the same</p>
+    <hr>
+    <input type="checkbox"  id="accept">
+    <label for="accept">I accept the terms and conditions</label>
+    <hr>
+    <button id="registare">registare</button>
+    <br><br>
+    <p id="error3" style="color:red ; font-size:small ; opacity: 0;">please check your data</p>
+  </div>
+  <br><br>
+  <div id="d2" style=" padding: 20px;width: 100%;"></div>
+  <div style="user-select:none ;" id="stars">
+    <i class="fa-solid fa-star star" style="font-size:50px ; user-select: none;"></i>
+    <i class="fa-solid fa-star star" style="font-size:50px ;"></i>
+    <i class="fa-solid fa-star star" style="font-size:50px ;"></i>
+    <i class="fa-solid fa-star star"  style="font-size:50px ;"></i>
+    <i class="fa-solid fa-star star" style="font-size:50px ;"></i>
+    </div>
+</div>
+
+</body>
+
+
+
+
+
+<script>
+  let d = document.getElementById("d");
+  let fullName = document.getElementById("fullName");
+  let error = document.getElementById("error")
+  let email = document.getElementById("email");
+  let cites = document.getElementById("cites");
+  let pass = document.getElementById("pass");
+  let passr = document.getElementById("passr");
+  let error2 = document.getElementById("error2")
+  let accept = document.getElementById("accept");
+  let registare = document.getElementById("registare");
+  let error3 = document.getElementById("error3")
+  
+  fullName.addEventListener("focus",fullNameonfocus);
+  fullName.addEventListener("focusout",fullNameonfocusout);
+  
+  function fullNameonfocus(){
+        fullName.style.border= "solid 5px blue"
+       }
+  function fullNameonfocusout(){
+  
+         let checkfullname = String(fullName.value).trim();
+         
+        if( checkfullname.split(" ").length<3){
+            error.style.opacity="1"
+            fullName.focus();
+
+        }else{ fullName.style.border= "solid 1px black"; error.style.opacity="0"}
+       }
+  passr.addEventListener("focusout",passfocusout);
+  pass.addEventListener("focusout",passfocusout);
+  function passfocusout(){
+    if(pass.value!=passr.value){
+      error2.style.opacity="1"
+     
+      
+    }else{
+      error2.style.opacity="0"
+    }
+  }
+  registare.onclick=registration;
+  function registration(){
+     if(fullName.value.trim!=null && fullName.value.trim!=""&&email.value.trim()!=null && email.value.trim()!=""&&pass.value!=null &&pass.value!=""&&passr.value!=null &&passr.value!="" && pass.value==passr.value && accept.checked){
+       let newwidow = open();
+       newwidow.document.write("thank you " + fullName.value)
+       error3.style.opacity="0"
+       d.style.border=" 3px solid lightgrey"
+     }else{
+      d.style.border="3px solid red";
+      error3.style.opacity="1"
+      }
+  }
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+let d2 = document.getElementById("d2");
+let img = document.createElement("img");
+let btnremoveimg = document.createElement("button")
+let btnalert = document.createElement("button")
+let btnreturnimg = document.createElement("button")
+img.setAttribute("src","1.jpg");
+img.setAttribute("style","width:100%;");
+d2.appendChild(img);
+btnremoveimg.innerHTML="remove img";
+btnreturnimg.innerHTML="return img";
+btnalert.innerHTML="show alert";
+btnremoveimg.setAttribute("style","margin:20px;");
+d2.appendChild(btnremoveimg)
+d2.appendChild(btnreturnimg)
+d2.insertBefore(btnalert,btnremoveimg)
+btnalert.addEventListener("click" ,function(){
+  alert(d2.childNodes.length)
+})
+btnremoveimg.addEventListener("click",function(){
+    img.remove()
+})
+btnreturnimg.addEventListener("click",function(){
+  d2.insertBefore(img,btnalert)
+})
+
+/////////////////////////////////////////////////////////////////////
+let stars = document.getElementById("stars")
+let star = document.getElementsByClassName("star")
+let indxestar = 0;
+star.addEventListener("mouseover",function() {
+  
+})
+
+
+
+
+
+
+
+</script>
+</html>

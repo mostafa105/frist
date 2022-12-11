@@ -1,0 +1,268 @@
+<html>
+
+<head>
+    <!-- <link rel="stylesheet" href="calculator.js"> -->
+    <style>
+        .width {
+            width: 80px;
+            height: 30px;
+        }
+
+        table {
+            float: left;
+            margin-right: 10px;
+        }
+
+        #td {
+            font-family: comic sans ms;
+            text-align: center;
+            color: white;
+            background-color: gray;
+            font-size: 9pt;
+        }
+
+        #Answer {
+           
+            text-align: center;
+            width: 100%;
+           padding: 5px;
+          
+        }
+
+    </style>
+</head>
+
+<body>
+    <table border="7">
+        <tr>
+            <td colspan="4" id="td"> JavaScript Calculator </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <input id="Answer" type="text" disabled placeholder="0">
+            </td>
+            <td>
+                <input type="button" class="width" value="CA" onmouseup="EnterClear(this.value)">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" class="width" value="1" onmouseup="EnterNumber(this.value)">
+            </td>
+            <td>
+                <input type="button" class="width" value="2" onmouseup="EnterNumber(this.value)">
+            </td>
+            <td>
+                <input type="button" class="width" value="3" onmouseup="EnterNumber(this.value)">
+            </td>
+            <td>
+                <input type="button" class="width" value="+" onmouseup="EnterOperator(this.value)">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" class="width" value="4" onmouseup="EnterNumber(this.value)">
+            </td>
+            <td>
+                <input type="button" class="width" value="5" onmouseup="EnterNumber(this.value)">
+            </td>
+            <td>
+                <input type="button" class="width" value="6" onmouseup="EnterNumber(this.value)">
+            </td>
+            <td>
+                <input type="button" class="width" value="-" onmouseup="EnterOperator(this.value)">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" class="width" value="7" onmouseup="EnterNumber(this.value)">
+            </td>
+            <td>
+                <input type="button" class="width" value="8" onmouseup="EnterNumber(this.value)">
+            </td>
+            <td>
+                <input type="button" class="width" value="9" onmouseup="EnterNumber(this.value)">
+            </td>
+            <td>
+                <input type="button" class="width" value="*" onmouseup="EnterOperator(this.value)">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" class="width" value="C" onmouseup="EnterClear(this.value)">
+            </td>
+            <td>
+                <input type="button" class="width" value="0" onmouseup="EnterNumber(this.value)">
+            </td>
+            <td>
+                <input type="button" class="width" value="." onmouseup="EnterNumber(this.value)">
+            </td>
+            <td>
+                <input type="button" class="width" value="/" onmouseup="EnterOperator(this.value)">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <input type="button" class="width" value="=" onmouseup="EnterEqual()"  style="width:100% ;">
+            </td> 
+        </tr>
+    </table>
+</body>
+<script>
+ 
+let txtanswer = document.getElementById("Answer")
+let width = document.getElementsByClassName("width")
+var oldnum = 0 ;
+let newnum = 0 ;
+let newnum2 = "" ;
+let check = 0  ;
+let operator = "" ;
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function EnterOperator(value){
+    //////////////////////////////////////////////////////////////////////////
+    if(operator==""){
+        if(oldnum==0){ oldnum=newnum;}//////////
+        txtanswer.value+=value;
+        operator=value
+        newnum =0
+        newnum2 =""
+    }else if(newnum==0){
+        if(txtanswer.value[txtanswer.value.length -1]==  "/"||"*"||"-"||"+"){
+            let txt = "";
+            for(i=0;i<txtanswer.value.length-1;i++){
+              txt += txtanswer.value[i];
+            }
+            txtanswer.value = txt + value ;
+            operator = value ;
+        }
+    }
+    else{
+        ///////////////////////////
+        if(operator=="+"){ 
+            oldnum += newnum ;
+            txtanswer.value=oldnum
+            txtanswer.value+=value
+            newnum = 0;
+            newnum2 =""
+            operator=value
+        }
+        ////////////////////////////
+        else if(operator=="-"){
+             oldnum -= newnum ;
+             txtanswer.value=oldnum
+             txtanswer.value+=value
+             newnum = 0;
+             newnum2 =""
+             operator=value
+        }
+        /////////////////////////////
+        else if(operator=="/"){
+             if( newnum!=0){
+               oldnum /= newnum ;
+               txtanswer.value=oldnum +value
+               newnum = 0;
+               newnum2 =""
+               operator=value
+             }else if(newnum==0){
+               alert("cannot Divide by 0")
+               txtanswer.value = oldnum + operator    
+               newnum2="" 
+               operator ="/";         
+             }
+
+        }
+        //////////////////////////////
+        else if(operator=="*"){
+            txtanswer.value+=value
+            oldnum *= newnum ; 
+            txtanswer.value=oldnum
+            txtanswer.value+=value
+            newnum = 0;
+            newnum2 =""
+            operator=value
+        } 
+    }   
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function EnterNumber(value){
+    if(check<1&&operator!=""){check++}
+    txtanswer.value+= value
+    newnum2 += value;
+    newnum = parseFloat(newnum2);
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function EnterEqual(){
+    if(check==1){  
+        if(operator=="+"){ 
+           oldnum += newnum ;
+           txtanswer.value=oldnum
+           operator=""
+           newnum = 0;
+           newnum2 = ""
+        }
+        //////////////////////////////////
+        else if(operator=="-"){
+          oldnum -= newnum ;
+          txtanswer.value=oldnum
+          operator=""
+          newnum = 0;
+          newnum2 = ""
+        }
+        ////////////////////////////////////
+        else if(operator=="/"){
+            if(newnum!=0){
+              oldnum /= newnum ;
+              txtanswer.value=oldnum
+              operator=""
+              newnum = 0;
+              newnum2 = ""
+            }else if(newnum==0){
+              alert("cannit Divide by 0")
+              txtanswer.value = oldnum   +operator
+               newnum2="" 
+               operator ="/";
+           }
+        }
+        ////////////////////////////////
+        else if(operator=="*"){
+            oldnum *= newnum ; 
+            txtanswer.value=oldnum
+            operator=""
+            newnum = 0;
+            newnum2 = 0
+        }
+    }    
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+function EnterClear(value){
+    if(value=="CA"){
+        txtanswer.value="";
+        operator =""
+        newnum = 0;
+        newnum2 = ""
+        oldnum = 0
+        check=0;
+        
+    }else{
+      let  text = txtanswer.value
+      txtanswer.value="";
+      if(isNaN(text[text.length - 1])|| operator==""){operator=""; oldnum=0}/////
+
+        newnum2="";
+        for(i=0 ;i<text.length - 1;i++){
+           txtanswer.value +=text[i];
+           if(isNaN(parseInt(text[i]))){
+                newnum2 = ""
+            }else{
+                newnum2+=text[i]
+            }
+        }
+        newnum=parseFloat(newnum2)
+        if(txtanswer.value.length==0){check=0}
+    }
+}
+</script>
+</html>
