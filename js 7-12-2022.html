@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  function Box (width ,hight,books){
+     this.width=  width;
+     this.hight = hight ;
+     this.books = books
+  }
+  Box.prototype.valueof=function(){
+    let sum = 0
+    for(i=0;i<this.books.length;i++){
+    
+          sum+= this.books[i].num_of_pages
+    }
+    return sum
+  }
+  Box.prototype.getareaspece = function(){
+   return this.hight + this.width ;
+
+  }
+  function book (id , name , writer_name , num_of_pages){
+    this.id =id ;
+    this.name = name ; 
+    this.writer_name = writer_name ;
+    this.num_of_pages = num_of_pages
+  }
+  // book.prototype.getbook= function(){
+  //   let array=[this.id ,this.name,this.writer_name,this.num_of_pages]
+  //   return array
+  // }
+  let a = new book(1 ,"a","ahmed",20);
+  let b = new book(1 ,"b","ali",30);
+  let c = new book(1 ,"c","amr",40);
+  let getbooks = new Box(2,3,[a,b,c]) ;
+  console.log(getbooks.getareaspece())
+  console.log(getbooks.valueof())
+  ////////////////////////////////////////////////////////
+
+  function point3D(x,y,z){
+    this.x = x || 0;
+    this.y =y || 0;
+    this.z =z || 0;
+  }
+   point3D.prototype.printpoint3D=function (){
+      return "x= " + this.x + "   y = "+this.y + "     z = " + this.z
+   }
+   let insrtnum = new point3D(10,20,30)
+   console.log(insrtnum.printpoint3D())
+
+   function (x , y , z){}
+  
+</script>
+</html>

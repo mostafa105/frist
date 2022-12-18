@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div style="display: flex; justify-content:center ;">
+    <div id="d1"> 
+      <input type="text" placeholder="User Name " id="username"> <br>
+       <input type="password" placeholder="pppppppppppppppppp" id="pass">
+       <br><br>
+       <button id="btnsave">Save</button> 
+       &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
+       <button id="btnclear">clear</button> 
+    </div>
+    <div id="d2">
+      <ol id="inlocal"> in local storage</ol>
+      <ol id="incookise"> in cookise</ol>
+
+    </div>
+    
+  </div>
+  <div style="padding:20px ; margin:20px ; width: 250px; height:350px; overflow: scroll;" id="getdata"  >
+
+  </div>
+</body>
+<script>
+    let pass = document.getElementById("pass");
+    let save = document.getElementById("btnsave");
+    let clear = document.getElementById("btnclear");
+    let li_1 = document.createElement("li")
+    let li_2 = document.createElement("li")
+    let li_3 = document.createElement("li")
+    let li_4 = document.createComment("li")
+    let inlocal = document.getElementById("inlocal")
+    let incookise = document.getElementById("incookise")
+  function savetolocalstorage(){
+    let username = document.getElementById("username");
+  
+
+  
+    localStorage.setItem("usernamed",username.value)
+    localStorage.setItem("pass",pass.value)
+    document.cookie = username.value
+    let d = new Date();
+    document.cookie = pass.value ; +" = expires=" +(d.getMonth + 5) ; 
+    li_1.innerHTML=localStorage.getItem("usernamed")
+    li_2.innerHTML=localStorage.getItem("pass")
+    li_3.innerHTML=document.cookie.getItem
+    li_4.innerHTML=document.cookie.getItem
+    inlocal.appendChild(li_1);
+    inlocal.appendChild(li_2);
+  }
+  save.addEventListener("click",savetolocalstorage)
+  function remove(){
+     localStorage.clear()
+  }
+  clear.addEventListener("click",remove)
+
+
+  ///////////////////////////////////////////////
+    ;
+  
+    let apidata = new XMLHttpRequest()
+    apidata.open("get" ,"https://jsonplaceholder.typicode.com/todos" )
+    apidata.send();
+    apidata.onreadystatechange=function(){
+      if(apidata.readyState==4 && apidata.status==200 ){
+        let todos = JSON.parse(apidata.responseText).todos;
+         localStorage.setItem("todos",JSON.stringify(todos))
+      }
+    }
+    document.getElementById("getdata").innerHTML= localStorage.getItem("todos")
+  
+</script>
+</html>
